@@ -1,0 +1,16 @@
+<div class="flex-search">
+  <select #searchType name="search_type" [value]="type" (change)="type = searchType.value" class="flex-search-input">
+    <option value="text">Text</option>
+    <option value="cast">Cast</option>
+    <option value="gener">Gener</option>
+  </select>
+  <input
+    #searchInput
+    type="search"
+    name="search"
+    placeholder="Enter search text"
+    class="flex-search-input"
+    [value]="searchText"
+    (keyup.enter)="onSearch(searchInput.value)"
+  />
+</div>

@@ -1,0 +1,25 @@
+$navbar-bg: #9C27B0;
+$white: #fff;
+
+.navbar {
+  background-color: $navbar-bg;
+  box-shadow: 0 3px 5px -1px rgba(0,0,0,.2),0 6px 10px 0 rgba(0,0,0,.14),0 1px 18px 0 rgba(0,0,0,.12);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  &-links {
+    @extend .btn;
+    @extend .btn-sm;
+    color: #FCE4EC;
+
+    &:hover {
+      color: $white;
+    }
+
+    &.active {
+      color: $white;
+      background-color: rgba(0, 0, 0, .1);
+    }
+  }
+}

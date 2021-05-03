@@ -1,0 +1,67 @@
+<div class="container login-container">
+  <div class="text-center mb-3">
+    <a class="navbar-brand" routerLink="/">
+      <img
+        height="60"
+        src="../../../assets/images/logo-white.svg"
+        alt="nirmalrohit.com"
+      />
+    </a>
+  </div>
+  <div class="login-card">
+    <div class="login-card-h">Log in to your account</div>
+    <div class="login-card-b">
+      <div class="alert alert-danger" *ngIf="form.errors">
+        Invalid email or password.
+      </div>
+      <form [formGroup]="form" class="login-form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            [class.is-invalid]="emailError"
+            placeholder="name@example.com"
+          />
+          <div class="invalid-feedback" *ngIf="emailError">
+            <ng-container *ngIf="emailError.required"
+              >Email is required.</ng-container
+            >
+            <ng-container *ngIf="emailError.email"
+              >Invalid email address.</ng-container
+            >
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label">Password</label>
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            [class.is-invalid]="passwordError"
+            placeholder="Password"
+          />
+          <div class="invalid-feedback" *ngIf="passwordError">
+            <ng-container *ngIf="passwordError.required"
+              >Password is required.</ng-container
+            >
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary elevated"
+          [disabled]="form.invalid"
+        >
+          Log In
+        </button>
+      </form>
+    </div>
+  </div>
+  <div></div>
+  <div class="text-end">
+    <a class="text-light" [routerLinkActive]="['active']" routerLink="/signup">
+      Create new account
+    </a>
+  </div>
+</div>

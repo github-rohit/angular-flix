@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+import { NavbarService } from './common/services/navbar.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.sass']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'angular-flix';
+  constructor(public navbar: NavbarService) {}
 }

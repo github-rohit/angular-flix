@@ -1,0 +1,30 @@
+<ng-container *ngIf="user.email">
+  <form [formGroup]="form" (ngSubmit)="addComment()">
+    <div class="add-comm-card">
+      <div class="add-comm-card-b">
+        <textarea
+          rows="4"
+          formControlName="comment"
+          class="form-control"
+          placeholder="Add Comment"
+        ></textarea>
+        <div *ngIf="success" class="text-success small">
+          <fa-icon [icon]="faThumbsUp"></fa-icon> Comment saved successfully.
+        </div>
+        <div *ngIf="error" class="text-danger small">
+          <fa-icon [icon]="faExclamation"></fa-icon> Something went wrong please
+          try again later!
+        </div>
+      </div>
+      <div class="add-comm-card-f">
+        <button
+          type="submit"
+          class="btn btn-primary btn-sm elevated"
+          [disabled]="form.invalid || loading"
+        >
+          Add Comment
+        </button>
+      </div>
+    </div>
+  </form>
+</ng-container>

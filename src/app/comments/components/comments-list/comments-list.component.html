@@ -1,0 +1,10 @@
+<div class="user-comments" *ngIf="comments">
+  <h5><fa-icon [icon]="faCommentDots"></fa-icon> Comments</h5>
+  <flix-comment-add [movieId]="movieId" (onSuccess)="updateCommentList($event)"></flix-comment-add>
+  <ng-container *ngFor="let comment of comments">
+    <div class="user-comment">
+      <div><span class="user-name">{{comment.name}}</span> &middot; <small class="text-muted">{{comment.date | date}}</small></div>
+      <div>{{comment.text}}</div>
+    </div>
+  </ng-container>
+</div>

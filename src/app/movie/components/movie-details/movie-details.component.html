@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="row movie" *ngIf="movie">
+    <div class="col-md-9 col-sm-7">
+      <h1 class="movie-title">{{movie?.title}} -  <small>({{movie?.year}})</small></h1>
+      <p class="mb-1">
+        <span class="badge rounded-pill bg-light text-dark">{{movie?.rated}}</span> &middot; <span class="small">{{movie?.runtime | minToHour}}</span> &middot; 
+        <span class="small movie-genre">
+          <ng-container *ngFor="let genre of movie?.genres">
+            <a routerLink="/" [queryParams]="{genre: genre}">{{genre}}</a>
+          </ng-container>
+        </span>
+      </p>
+      <p class="small mb-1">
+        <span><span class="text-muted">Directed by:</span><strong> {{movie?.directors}}</strong></span> 
+      </p>
+      <p class="small mb-1">
+        <span><span class="text-muted">Writers: </span>{{movie?.writers?.join(', ')}}</span> 
+      </p>
+      <p class="small mb-1">
+        <span class="text-muted">Languages:</span> {{movie?.languages?.join(', ')}}
+      </p>
+      <p class="small" *ngIf="movie.countries">
+        <span class="text-muted">Countries: </span> {{movie?.countries?.join(', ')}}
+      </p>
+      <p>{{movie?.fullplot}}</p>
+      <div class="movie-cast">
+        <h5 class="movie-cast-title mb-1">Cast</h5>
+        <ng-container *ngFor="let cast of movie?.cast">
+          <a routerLink="/" [queryParams]="{cast: cast}">{{cast}}</a>
+        </ng-container>
+      </div>
+      <div class="movie-awards calout-primary" *ngIf="movie.awards">
+        <fa-icon [icon]="faTrophy"></fa-icon>{{movie.awards.text}}
+      </div>
+      <div>
+        <ng-container *ngIf="movieId">
+          <flix-comments-list [movieId]="movieId" [comments]="movie.comments"></flix-comments-list>
+        </ng-container>
+      </div>
+    </div>
+    <div class="col-md-3 col-sm-5">
+      <img class="img-fluid" [src]="movie?.poster" />
+      <div class="movie-ratings">
+        <div class="movie-rating" *ngIf="movie.imdb">
+          <span class="movie-rating-num">{{movie.imdb.rating}}/<span class="small">10</span><small>IMDB</small></span> 
+          <span class="movie-rating-lbl">Rating from {{movie.imdb.votes | number}} reviews</span>
+        </div>
+        <div class="movie-rating" *ngIf="movie.metacritic">
+          <span class="movie-rating-num">{{movie.metacritic}}%<small>Metacritic</small></span>
+        </div>
+        <div class="movie-rating" *ngIf="movie.tomatoes?.critic">
+          <span class="movie-rating-num">{{movie.tomatoes.critic.meter}}%<small>Rotten Tomatoes</small></span><span class="movie-rating-lbl">Critic rating from {{movie.tomatoes.critic.numReviews | number}} reviews</span>
+        </div>
+        <div class="movie-rating" *ngIf="movie.tomatoes?.viewer">
+          <span class="movie-rating-num">{{movie.tomatoes.viewer.meter}}%<small>Rotten Tomatoes</small></span><span class="movie-rating-lbl">Viewer rating from {{movie.tomatoes.viewer.numReviews | number}} reviews</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

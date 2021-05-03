@@ -1,0 +1,90 @@
+.movie {
+  &-title {
+    color: #000;
+    font-size: 2em;
+    font-weight: 500;
+    line-height: 1.5;
+
+    small {
+      font-weight: 300;
+    }
+  }
+
+  &-genre {
+    a {
+      text-decoration: none;
+      &:not(:last-child) {
+        &::after{
+          content: ', ';
+        }
+      }
+    }
+  }
+
+  &-cast {
+    &-title {
+      font-weight: 300;
+    }
+
+    a {
+      text-decoration: none;
+      margin-right: 5px;
+      &:not(:last-child) {
+        &::after{
+          content: ', ';
+        }
+      }
+    }
+
+    .ng-fa-icon {
+      font-size: 0.875em;
+    }
+  }
+
+  &-awards {
+    font-weight: 400;
+
+    .ng-fa-icon {
+      margin-right: 10px;
+    }
+  }
+
+  &-ratings {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    gap: 10px;
+  }
+  &-rating {
+    flex: 1 1 0px;
+    border: 1px dashed #F3E5F5;
+    border-radius: 4px;
+    padding: 10px;
+
+    &-num {
+      color: #9C27B0;
+      font-weight: 400;
+      margin-right: 5px;
+      display: block;
+      font-size: 24px;
+
+      small {
+        font-size: 14px;
+        margin-left: 5px;
+        color: #4a4a4a;
+      }
+    }
+
+    &-lbl {
+      font-size: 0.875em;
+      line-height: 1.4;
+      color: #6a6a6a;
+    }
+  }
+}
+
+@media (max-width: 575px) {
+  .movie {
+    flex-direction: column-reverse;
+  }
+}

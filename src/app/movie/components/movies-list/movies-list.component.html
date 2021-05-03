@@ -1,0 +1,64 @@
+<div class="container">
+  <ng-container *ngIf="loading else loadingDone">
+    loading...
+  </ng-container>
+  <ng-template #loadingDone>
+    <ng-container *ngIf="movies?.total_results else noRecord">
+      <div class="row">
+        <div
+          class="col-md-4 col-sm-6 card-container"
+          *ngFor="let movie of movies?.movies"
+        >
+          <div class="card">
+            <div class="card-poster">
+              <img
+                [src]="movie.poster"
+                class="card-img-top"
+                [alt]="movie.title"
+              />
+            </div>
+            <div class="card-body">
+              <div class="card-body-txt">
+                <h5 class="card-title">{{ movie.title }}</h5>
+                <p class="card-text">
+                  <span class="small">{{ movie.year }}</span> &middot;
+                  <span class="badge rounded-pill bg-light text-dark">{{
+                    movie.rated
+                  }}</span>
+                  &middot;
+                  <span class="badge rounded-pill bg-light text-dark"
+                    >IMDB: {{ movie.imdb.rating }}/<span class="small"
+                      >10</span
+                    ></span
+                  >
+                </p>
+                <p class="card-text">{{ movie?.plot }}</p>
+              </div>
+              <div class="card-body-act">
+                <a
+                  routerLink="/movie/{{ movie._id }}/{{
+                    movie.title.split(' ').join('-')
+                  }}"
+                  class="btn btn-sm btn-outline-primary"
+                  >View Details</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-2">
+        <ng-container *ngIf="movies">
+          <flix-pagination
+            [totalItems]="movies.total_results"
+            [currentPage]="currentPage"
+            (pageChange)="onPageChange($event)"
+          ></flix-pagination>
+        </ng-container>
+      </div>
+    </ng-container>
+    <ng-template #noRecord>
+      <p class="no-record">We couldn't find anything matching <span class="text-primary">{{queryText}}</span></p>
+    </ng-template>
+  </ng-template>
+</div>

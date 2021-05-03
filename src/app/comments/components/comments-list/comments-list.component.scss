@@ -1,0 +1,25 @@
+.user {
+  &-comments {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &-comment {
+    position: relative;
+
+    &:after {
+      display: block;
+      position: absolute;
+      content: '';
+      width: 50%;
+      bottom: -15px;
+      height: 1px;
+      background-image: linear-gradient(to right, rgb(206, 147, 216), rgba(206, 147, 216, 0));
+    }
+  }
+
+  &-name {
+    font-weight: 400;
+  }
+}

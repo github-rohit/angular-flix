@@ -1,0 +1,13 @@
+.add-comm-card {
+  background-color: #fafafa;
+  border-radius: 4px;
+
+  &-b,
+  &-f {
+    padding: 15px;
+  }
+
+  &-f {
+    padding-top: 0;
+  }
+}

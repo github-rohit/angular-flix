@@ -1,0 +1,120 @@
+<div class="container signup-container">
+  <div class="text-center mb-3">
+    <a class="navbar-brand" routerLink="/">
+      <img
+        height="60"
+        src="../../../assets/images/logo-white.svg"
+        alt="nirmalrohit.com"
+      />
+    </a>
+  </div>
+  <div class="signup-card">
+    <div class="signup-card-h">Sign up for free</div>
+    <div class="signup-card-b">
+      <form [formGroup]="form" class="signup-form" (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label">Name</label>
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            [class.is-invalid]="nameError"
+            placeholder="Full Name"
+          />
+          <div class="invalid-feedback" *ngIf="nameError">
+            <ng-container *ngIf="nameError.required"
+              >Name is required.</ng-container
+            >
+            <ng-container *ngIf="nameError.notastring"
+              >No number or special characters allowed</ng-container
+            >
+            <ng-container *ngIf="!nameError.notastring && nameError.minlength"
+              >Name must be of minimum
+              {{ nameError.minlength.requiredLength }} characters
+            </ng-container>
+            <ng-container *ngIf="nameError.db">{{ nameError.db }}</ng-container>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <input
+            formControlName="email"
+            type="email"
+            class="form-control"
+            [class.is-invalid]="emailError"
+            placeholder="name@example.com"
+          />
+          <div class="invalid-feedback" *ngIf="emailError">
+            <ng-container *ngIf="emailError.required"
+              >Email is required.</ng-container
+            >
+            <ng-container *ngIf="emailError.email"
+              >Invalid email address.</ng-container
+            >
+            <ng-container *ngIf="emailError.db">{{
+              emailError.db
+            }}</ng-container>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            [class.is-invalid]="passwdError"
+            placeholder="Password"
+          />
+          <div class="invalid-feedback" *ngIf="passwdError">
+            <ng-container *ngIf="passwdError.required"
+              >Password is required.</ng-container
+            >
+            <ng-container *ngIf="passwdError.minlength"
+              >Password must be of minimum
+              {{ passwdError.minlength.requiredLength }} characters
+            </ng-container>
+            <ng-container *ngIf="passwdError.db">{{
+              passwdError.db
+            }}</ng-container>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label class="form-label">Confirm Password</label>
+          <input
+            formControlName="confirmPassword"
+            type="password"
+            class="form-control"
+            [class.is-invalid]="cpasswdError"
+            placeholder="Confirm Password"
+          />
+          <div class="invalid-feedback" *ngIf="cpasswdError">
+            <ng-container *ngIf="cpasswdError.required"
+              >Confirm Password is required.</ng-container
+            >
+            <ng-container *ngIf="!cpasswdError.required && cpasswdError.notSame"
+              >Password & Confirm Password does not match.</ng-container
+            >
+          </div>
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary elevated"
+          [disabled]="form.invalid"
+        >
+          Create new account
+        </button>
+      </form>
+    </div>
+    <div class="signup-card-f text-end">
+      Already have an account?
+      <a
+        class="btn btn-sm btn-outline-primary"
+        [routerLinkActive]="['active']"
+        routerLink="/login"
+      >
+        Log In
+      </a>
+    </div>
+  </div>
+  <div></div>
+</div>

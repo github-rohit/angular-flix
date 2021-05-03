@@ -1,0 +1,30 @@
+<header class="navbar mb-4">
+  <nav class="container">
+    <div class="navbar-header me-3">
+      <a class="navbar-brand" routerLink="/">
+        <img height="40" src="../../../assets/images/logo-white.svg" alt="nirmalrohit.com" />
+      </a>
+    </div>
+    <ng-container *ngIf="search.visible">
+      <flix-search></flix-search>
+    </ng-container> 
+    <div class=" ms-md-auto">
+      <ng-container *ngIf="user?.email; else nouser">
+        <button type="button" class="navbar-links" (click)="onLogout()">
+          LOGOUT
+        </button>
+        <a class="navbar-links" [routerLinkActive]="['active']" routerLink="/account">
+          {{user.name}}
+        </a>
+      </ng-container>
+      <ng-template #nouser>
+        <a class="navbar-links" [routerLinkActive]="['active']" routerLink="/login">
+          LOGIN
+        </a>
+        <a class="navbar-links" [routerLinkActive]="['active']" routerLink="/signup">
+          SIGNUP
+        </a>
+      </ng-template>
+    </div>
+  </nav>
+</header>

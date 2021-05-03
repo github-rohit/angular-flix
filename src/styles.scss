@@ -1,0 +1,95 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('//fonts.googleapis.com/css?family=Poppins:300,400,500|Material+Icons');
+@import '/node_modules/bootstrap/scss/bootstrap';
+@import './app/common/components/navbar/navbar.component';
+
+
+$primary: #9C27B0;
+$primary-light: #F3E5F5;
+
+
+@import './app/user/components/login/login.component.scss';
+
+
+body {
+  font-family: Poppins, sans-serif;
+  font-weight: 300;
+  font-size: 16px;
+  letter-spacing: 0.015rem;
+  color: #404040;
+  line-height: 1.7;
+}
+.body-bg-color {
+  background: $primary url('./assets/images/body-cover.png') top right /cover no-repeat fixed;
+}
+
+b,
+strong,
+.badge {
+  font-weight: 500;
+}
+
+a {
+  color: $primary;
+}
+
+.text-primary {
+  color: $primary !important;
+}
+
+.bg-primary {
+  background-color: $primary !important;
+}
+.bg-light {
+  background-color: $primary-light !important;
+}
+
+.btn-primary {
+  @include button-variant($primary, $primary);
+}
+
+.btn-outline-primary {
+  @include button-outline-variant($primary);
+}
+
+.elevated:not(:disabled) {
+  box-shadow: 0 3px 1px -2px rgba(0,0,0,.2),0 2px 2px 0 rgba(0,0,0,.14),0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.form-control {
+  font-size: 14px;
+
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 0.25rem rgba(156, 39, 176, 0.25);
+  }
+}
+
+.calout {
+  margin: 2rem 0;
+  padding: 1rem;
+  background-color: transparent;
+  border-left: 3px solid transparent;
+}
+
+.calout-primary {
+  @extend .calout;
+  background-color: $primary-light;
+  border-color: $primary;
+  color: $primary;
+}
+
+.primary-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex: 1 1 auto;
+  width: 100%;
+  min-height: 100vh;
+}
+
+@media (max-width: 992px) {
+  .container-sm, .container {
+    max-width: 100%;
+  }
+}
