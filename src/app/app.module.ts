@@ -24,6 +24,7 @@ import { PaginationComponent } from './common/components/pagination/pagination.c
 import { SearchComponent } from './common/components/search/search.component';
 import { AppErrorHandler } from './common/errors/app-error-handler';
 import { RequestInterceptor } from './common/interceptor/request.interceptor';
+import { EncodeUriStringPipe } from './common/pipes/encode-uri-string.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { RequestInterceptor } from './common/interceptor/request.interceptor';
     CommentAddComponent,
     PaginationComponent,
     SearchComponent,
+    EncodeUriStringPipe,
   ],
   imports: [
     BrowserModule,

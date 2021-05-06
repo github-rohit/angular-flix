@@ -36,9 +36,7 @@
               </div>
               <div class="card-body-act">
                 <a
-                  routerLink="/movie/{{ movie._id }}/{{
-                    movie.title.split(' ').join('-')
-                  }}"
+                  routerLink="/movie/{{ movie._id }}/{{movie.title | encodeUriString}}"
                   class="btn btn-sm btn-outline-primary"
                   >View Details</a
                 >
