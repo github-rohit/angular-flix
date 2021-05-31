@@ -1,4 +1,4 @@
-<ng-container *ngIf="user.email">
+<ng-container *ngIf="user.email; else nouser">
   <form [formGroup]="form" (ngSubmit)="addComment()">
     <div class="add-comm-card">
       <div class="add-comm-card-b">
@@ -28,3 +28,11 @@
     </div>
   </form>
 </ng-container>
+<ng-template #nouser>
+  <div class="add-comm-card">
+    <div class="add-comm-card-b">
+      You must be logged in to post a comment
+      <a class="btn btn-outline-primary btn-sm" routerLink="/login"> Login </a>
+    </div>
+  </div>
+</ng-template>

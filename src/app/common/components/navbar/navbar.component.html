@@ -13,9 +13,9 @@
         <button type="button" class="navbar-links" (click)="onLogout()">
           LOGOUT
         </button>
-        <a class="navbar-links" [routerLinkActive]="['active']" routerLink="/account">
+        <!-- <a class="navbar-links" [routerLinkActive]="['active']" routerLink="/account">
           {{user.name}}
-        </a>
+        </a> -->
       </ng-container>
       <ng-template #nouser>
         <a class="navbar-links" [routerLinkActive]="['active']" routerLink="/login">
